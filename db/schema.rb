@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_12_183337) do
+ActiveRecord::Schema.define(version: 2021_11_12_204030) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,23 @@ ActiveRecord::Schema.define(version: 2021_11_12_183337) do
     t.index ["code"], name: "okved_code", unique: true
   end
 
+  create_table "order_companies", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_order_companies_on_company_id"
+    t.index ["order_id"], name: "index_order_companies_on_order_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.date "date"
+    t.text "comment"
+    t.string "state"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "role"
     t.string "email"
@@ -53,4 +70,6 @@ ActiveRecord::Schema.define(version: 2021_11_12_183337) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "order_companies", "companies"
+  add_foreign_key "order_companies", "orders"
 end
