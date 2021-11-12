@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   include Pundit
 
   rescue_from Pundit::NotAuthorizedError, with: :access_denied
-  after_action :verify_authorized
+  # after_action :verify_authorized
 
   private
 

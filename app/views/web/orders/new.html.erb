@@ -1,0 +1,26 @@
+<div class="container-sm" style="max-width: 700px">
+  <h3 class="mb-3">Создать заявку для обхода предприятий</h3>
+  <%= form_for @order do |f| %>
+    <div class="form-group">
+      <label class="mb-2">Организации для обхода</label>
+      <%= f.collection_check_boxes :company_ids, @companies, :id, :desc, { label: false } do |cb| %>
+        <% name, activity, address = cb.text.split(';') %>
+        <div class="form-check">
+          <label class="form-check-label" for="<%= cb.value %>">
+            <%= name %>, <small class="text-muted"><%= activity %></small>, <%= address.split(', ')[2..-1].join(', ') %>
+          </label>
+          <%= cb.check_box(class: 'form-check-input', id: cb.value) %>
+        </div>
+      <% end %>
+    </div>
+    <div class="form-group mt-3">
+      <label for="dateInput1">Дата выезда</label>
+      <%= f.date_field :date, class: 'form-control', id: 'dateInput1' %>
+    </div>
+    <div class="form-group mt-3">
+      <label for="commentInput1">Комментарий</label>
+      <%= f.text_area :comment, class: 'form-control', id: 'commentInput1' %>
+    </div>
+    <%= f.submit 'Сохранить заявку', class: 'btn btn-primary mt-3' %>
+  <% end %>
+</div>

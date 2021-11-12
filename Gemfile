@@ -23,6 +23,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 gem 'capistrano'
 gem 'capistrano-rails'
+gem 'capistrano-db-tasks', require: false
 gem 'enumerize'
 gem 'execjs'
 gem 'mini_racer'
