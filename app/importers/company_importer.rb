@@ -1,7 +1,7 @@
 require 'creek'
 
 class CompanyImporter
-  def initialize(file = 'test/fixtures/files/company.xlsx')
+  def initialize(file = 'test/fixtures/files/Company.xlsx')
     @file_path = file
     @header = nil
     @compaies = []
