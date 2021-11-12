@@ -5,4 +5,10 @@ Rails.application.routes.draw do
 
     resource :session, only: %i[new create destroy]
   end
+
+  namespace :api do
+    namespace :v1 do
+      resources :claims
+    end
+  end
 end
