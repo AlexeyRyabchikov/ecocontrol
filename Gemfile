@@ -28,6 +28,8 @@ gem 'execjs'
 gem 'mini_racer'
 gem 'pundit'
 gem 'valid_email'
+gem 'creek'
+gem "activerecord-import"
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

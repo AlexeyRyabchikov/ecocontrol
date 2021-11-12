@@ -33,6 +33,9 @@ ActiveRecord::Schema.define(version: 2021_11_12_204030) do
     t.string "state"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "okved_id"
+    t.string "activity_type"
+    t.index ["okved_id"], name: "index_companies_on_okved_id"
   end
 
   create_table "okveds", force: :cascade do |t|
