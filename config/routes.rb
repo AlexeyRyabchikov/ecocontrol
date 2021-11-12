@@ -4,11 +4,7 @@ Rails.application.routes.draw do
     root to: "welcome#index"
 
     resource :session, only: %i[new create destroy]
-  end
-
-  namespace :api do
-    namespace :v1 do
-      resources :claims
-    end
+    resources :orders, only: %i[create show]
+    resources :claims
   end
 end

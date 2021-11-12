@@ -1,5 +1,4 @@
-class Api::V1::ClaimsController < ApplicationController
-
+class Web::ClaimsController < Web::ApplicationController
   def new
     claim = Claim.new
   end
