@@ -1,4 +1,4 @@
-class Api::V1::ClaimsController < Api::V1::ApplicationController
+class Api::V1::ClaimsController < ApplicationController
 
   def new
     claim = Claim.new
