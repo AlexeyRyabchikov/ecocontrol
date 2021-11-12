@@ -11,6 +11,7 @@ class DangerousOkvedImporter
   end
 
   def execute
+    # окведы по частоте упоминания
     CSV.read(@file_path, @options).each do |row|
       row["ОКВЭД"].to_s.split(',').each do |okved|
         code = okved.strip
@@ -19,6 +20,7 @@ class DangerousOkvedImporter
       end
     end
 
-    Okved.where(code: @okveds.keys).update_all(dangerous: tru)
+    # но не пригодилось =/
+    Okved.where(code: @okveds.keys).update_all(dangerous: true)
   end
 end
