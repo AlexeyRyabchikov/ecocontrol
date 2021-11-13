@@ -9,7 +9,7 @@ class Web::ClaimsController < Web::ApplicationController
     if claim.save
       redirect_to action: :index
     else
-      render action: :new
+      redirect_to action: :new
     end
   end
 
@@ -19,8 +19,8 @@ class Web::ClaimsController < Web::ApplicationController
   end
 
   def index
-    claims = Claim.all
-    render json: claims
+    @claims = Claim.all
+    render :index
   end
 
   def edit
@@ -45,6 +45,6 @@ class Web::ClaimsController < Web::ApplicationController
   private
 
   def claim_attrs
-    params.require(:claim).permit(:title, :description)
+    params.permit(:fio, :title, :reason, :description, :location)
   end
 end

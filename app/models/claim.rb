@@ -1,4 +1,3 @@
 class Claim < ApplicationRecord
-
-  validates :title, presence: true
+  validates :reason, :location, presence: true
 end

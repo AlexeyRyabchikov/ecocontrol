@@ -1,0 +1,26 @@
+<div class="container" style="max-width: 800px">
+
+    <div class="row">
+   <% @claims.each do |claim| %>
+
+    <div class="mb-6">
+      <div class="card">
+        <div class="card-header">
+          <%= claim.reason %>
+          <%= claim.state %>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"> <%= claim.title %></h5>
+          <%= claim.description %>
+        </div>
+      </div>
+    <% end %>
+      </div>
+
+
+
+          <hr class="mb-4">
+
+
+    <a href="/claims/new" class="btn btn-primary">add</a>
+</div>

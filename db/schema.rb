@@ -20,6 +20,11 @@ ActiveRecord::Schema.define(version: 2021_11_13_011747) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "fio"
+    t.string "reason"
+    t.string "symptoms"
+    t.string "location"
+    t.string "state"
   end
 
   create_table "companies", force: :cascade do |t|
