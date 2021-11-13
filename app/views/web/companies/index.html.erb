@@ -7,7 +7,6 @@
         <th scope="col">Адрес</th>
         <th scope="col">Телефон</th>
         <th scope="col">Регистрация НВОС</th>
-        <th scope="col">Потенциально опасное</th>
       </tr>
     </thead>
     <tbody>
@@ -24,7 +23,6 @@
           <td><%= company.address %></td>
           <td><%= company.phone %></td>
           <td><%= company.nvos_checked ? 'Да' : 'Нет' %></td>
-          <td><%= company.phone %></td>
         </tr>
       <% end %>
     </tbody>
