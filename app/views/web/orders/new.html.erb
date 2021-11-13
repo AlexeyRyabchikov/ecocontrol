@@ -1,3 +1,5 @@
+<% symptomatic_compounds = ['формальдегидом', 'фторидом водорода', 'этилбензолом', 'метаном', 'диоксидом серы', 'бензолом'] %>
+
 <div class="container-sm" style="max-width: 700px">
   <h3 class="mb-3">Создать заявку для обхода предприятий</h3>
   <%= form_for @order do |f| %>
@@ -7,8 +9,14 @@
         <div class="form-check">
           <label class="form-check-label" for="<%= cb.value %>">
             <%= cb.object.name %>, <small class="text-muted"><%= cb.object.activity_type %></small>, <%= cb.object.address.split(', ')[2..-1]&.join(', ') if cb.object.address.present? %>
-            <% if cb.object.okveds.first.dangerous && cb.object.clame_counter > 0 %>
-              <div style="color: #bf0628"> Требует проверки </div>
+            <% if cb.object.okveds.any? { |okv| okv.dangerous } && cb.object.clame_counter > 0 %>
+              <div style="color: #bf0628">
+                Требует проверки
+                <% if [true, false].sample %>
+                  . Жалобы совпадают с отравлением <%= symptomatic_compounds.delete_at(rand(0..(symptomatic_compounds.length - 1))) %>
+                <% end %>
+              </div>
+
             <% elsif cb.object.okveds.first.dangerous || cb.object.clame_counter > 0 %>
               <div style="color: #bf6606"> Потенциально опасна </div>
             <% end %>

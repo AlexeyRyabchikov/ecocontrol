@@ -9,8 +9,7 @@ class Web::OrdersController < Web::ApplicationController
 
   def new
     @order = Order.new
-    @companies = Company.where(nvos_checked: false)
-                        .sample(10)
+    @companies = find_companies
   end
 
   def create
@@ -31,5 +30,17 @@ class Web::OrdersController < Web::ApplicationController
 
   def order_params
     params.require(:order).permit(:date, :comment, company_ids: [])
+  end
+
+  def find_companies
+    dangerous_companies = Company.joins(:okveds)
+                                 .where("okveds.dangerous = 't' AND clame_counter > 0")
+                                 .distinct('id')
+                                 .limit(2)
+    other_companies = Company.where(nvos_checked: false)
+                             .where.not(id: dangerous_companies.select(:id))
+                             .sample(8)
+
+    [*dangerous_companies, *other_companies].shuffle
   end
 end
