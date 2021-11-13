@@ -8,7 +8,7 @@ class Web::OrdersController < Web::ApplicationController
     @order = Order.new(order_params)
 
     if @order.save
-      render json: { status: :ok }
+      redirect_to @order
     else
       render :new
     end
@@ -16,7 +16,6 @@ class Web::OrdersController < Web::ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    render json: @order
   end
 
   private
