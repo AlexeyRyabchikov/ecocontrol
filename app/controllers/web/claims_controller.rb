@@ -4,7 +4,9 @@ class Web::ClaimsController < Web::ApplicationController
   end
 
   def create
-    claim = Claim.new(claim_attrs)
+    params = claim_attrs.to_h
+    params['symptoms'] = params['symptoms'].join(',')
+    claim = Claim.new(params)
 
     if claim.save
       redirect_to action: :index
@@ -45,6 +47,6 @@ class Web::ClaimsController < Web::ApplicationController
   private
 
   def claim_attrs
-    params.permit(:fio, :title, :reason, :description, :location)
+    params.permit(:fio, :title, :reason, :description, :location, :state, symptoms:[])
   end
 end

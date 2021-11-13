@@ -1,77 +1,105 @@
 <div class="container" style="max-width: 800px">
 
-  <p class="lead text-center mt-4">Сделай первый шаг к экологичному городу</p>
-
-
   <div class="container">
 
-    <a href="/claims/" class="btn btn-primary">bask</a>
     <div class="row">
-      <div class="col-md-4 order-md-2 mb-4">
-        <h4 class="d-flex justify-content-between align-items-center mb-3">
-          <span class="text-muted">Ya maps</span>
-          <span class="badge badge-secondary badge-pill">3</span>
-        </h4>
-      </div>
       <div class="col-md-8 order-md-1">
-        <h4 class="mb-3">Добавить обращение</h4>
+        <h4 class="lead text-center mt-4">Добавить обращение</h4>
         <form class="needs-validation" novalidate action="/claims" method="post">
          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-          <div class="mb-3">
-            <label for="fio">Fio <span class="text-muted">(Optional)</span></label>
-            <input type="text" class="form-control" id="fio" name="fio" placeholder="" value="" required>
-            <div class="invalid-feedback">
-              Valid name is required.
-            </div>
-          </div>
-
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="anonymous">
-            <label class="custom-control-label" for="anonymous">Или анонимно</label>
-          </div>
 
           <hr class="mb-4">
 
           <div class="row">
             <div class="col-md-6 mb-6">
-              <label for="reason">Причина</label>
-              <select class="custom-select d-block w-100" id="reason" name="reason" required>
-                <option value="">Choose...</option>
-                <option>Несанкционированная свалка</option>
-                <option>Не приятный запах</option>
-                <option>Едкий дым, смог</option>
-              </select>
+              <label for="reason"> <b>Причина</b></label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" value="Несанкционированная свалка" id="reason" name="reason">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Несанкционированная свалка
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" value="Не приятный запах" id="reason" name="reason">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Не приятный запах
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" value="Едкий дым, смог" id="reason" name="reason">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Едкий дым, смог
+                </label>
+              </div>
               <div class="invalid-feedback">
                 Please select a valid value.
               </div>
             </div>
+          </div>
+
             <div class="col-md-6 mb-6">
-              <label for="state">Как давно?</label>
-              <select class="custom-select d-block w-100" id="state" name="state" required>
-                <option value="">Choose...</option>
-                <option>Очень</option>
-              </select>
+              <label for="state"><b>Как давно?</b></label>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Сегодня" id="state" name="state">
+                <label class="form-check-label" for="flexCheckDefault">
+                Сегодня
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="На прошедшей неделе" id="state" name="state">
+                <label class="form-check-label" for="flexCheckDefault">
+                На прошедшей неделе
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="В течение последнего месяца" id="state" name="state">
+                <label class="form-check-label" for="flexCheckDefault">
+                В течение последнего месяца
+                </label>
+              </div>
               <div class="invalid-feedback">
                 Please provide a valid state.
               </div>
             </div>
-          </div>
 
           <hr class="mb-4">
 
           <div class="mb-3">
-            <label for="location">Address </label>
+            <label for="location">Адресс происшествия </label>
             <input type="text" class="form-control" id="location" name="location" placeholder="Как добраться">
           </div>
 
           <hr class="mb-4">
 
           <div class="mb-3">
-            <label for="description">desc</label>
+            <label for="description">Расскажите о проблеме</label>
             <textarea class="form-control" id="description" name="description" rows="3"></textarea>
           </div>
 
-          <button class="btn btn-primary btn-lg btn-block" type="submit">Continue</button>
+          <div class="col-md-6 mb-6">
+            <label for="state"><b>Если у вас были симптомы отравленя, укажите их</b></label>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="Сегодня" id="flexCheckDefault" name="symptoms[]">
+              <label class="form-check-label" for="flexCheckDefault">
+              Головная боль
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="На прошедшей неделе" id="flexCheckDefault" name="symptoms[]">
+              <label class="form-check-label" for="flexCheckChecked">
+              Кашель
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="В течение последнего месяца" id="flexCheckDefault" name="symptoms[]">
+              <label class="form-check-label" for="flexCheckChecked">
+              Тошнота
+              </label>
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-lg btn-block" type="submit">Создать</button>
+          <a href="/claims/" class="btn btn-danger">Назад</a>
         </form>
       </div>
     </div>
