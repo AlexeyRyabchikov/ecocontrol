@@ -45,15 +45,6 @@ ActiveRecord::Schema.define(version: 2021_11_13_120432) do
     t.decimal "latitude", precision: 15, scale: 10
   end
 
-  create_table "company_claims", force: :cascade do |t|
-    t.bigint "company_id"
-    t.bigint "claim_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["claim_id"], name: "index_company_claims_on_claim_id"
-    t.index ["company_id"], name: "index_company_claims_on_company_id"
-  end
-
   create_table "company_okveds", force: :cascade do |t|
     t.bigint "company_id"
     t.bigint "okved_id"
