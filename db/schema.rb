@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_13_115247) do
+ActiveRecord::Schema.define(version: 2021_11_13_120432) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 2021_11_13_115247) do
     t.string "activity_type"
     t.boolean "nvos_checked", default: false
     t.integer "clame_counter", default: 0
+    t.decimal "longitude", precision: 15, scale: 10
+    t.decimal "latitude", precision: 15, scale: 10
   end
 
   create_table "company_claims", force: :cascade do |t|
