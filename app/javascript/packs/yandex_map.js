@@ -1,6 +1,8 @@
 ymaps.ready(init);
 
 function init() {
+    const map = document.getElementById('map');
+    map.innerHTML = '';
     // Создаем карту.
     var myMap = new ymaps.Map("map", {
             center: [55.16, 61.43],
