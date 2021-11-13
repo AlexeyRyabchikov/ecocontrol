@@ -8,5 +8,6 @@ Rails.application.routes.draw do
       get :search_companies, on: :collection
     end
     resources :claims
+    resources :companies
   end
 end
