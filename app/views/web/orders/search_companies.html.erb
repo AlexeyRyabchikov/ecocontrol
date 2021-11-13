@@ -1,0 +1,15 @@
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=9f800cdd-d032-497d-b5cb-2cb9a4348392" type="text/javascript"></script>
+<%= javascript_pack_tag 'yandex_map', 'data-turbolinks-track': 'reload' %>
+
+<div class="container align-middle">
+  <h3 class="mb-4" style="text-align: center">Поиск потенциально опасных компаний</h3>
+  <p style="text-align: center">Выделите область поиска зеленым кругом для поиска организаций потенциально загрязняющих окружающую среду</p>
+</div>
+<div class="container" style="width: 50%; height: 400px; min-width: 350px" >
+  <div id="map" style="width: 100%; height: 100%"></div>
+</div>
+<div class="container text-center mt-3">
+  <%= link_to new_order_path do %>
+    <button type="button" class="btn btn-success">Начать поиск</button>
+  <% end %>
+</div>

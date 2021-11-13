@@ -4,7 +4,9 @@ Rails.application.routes.draw do
     root to: "welcome#index"
 
     resource :session, only: %i[new create destroy]
-    resources :orders, only: %i[new create show]
+    resources :orders, only: %i[new create show] do
+      get :search_companies, on: :collection
+    end
     resources :claims
   end
 end

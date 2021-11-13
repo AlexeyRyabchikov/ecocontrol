@@ -15,11 +15,14 @@ class CompanyImporter
         @header = row.transform_keys{ |key| key[0] }
       else
         row = update_keys(row)
-        @compaies << Company.new(prepare_data(row))
+        okdev = okved_cache[row['Вид деятельности']]
+        company = Company.new(prepare_data(row))
+        company.company_okved.build(okved: okdev) if okdev.present?
+        @compaies << company
       end
     end
 
-    Company.import(@compaies)
+    Company.import @compaies, recursive: true
   end
 
   private
@@ -31,7 +34,6 @@ class CompanyImporter
       address: item['Адрес'],
       phone: item['Телефон'],
       email: item['email'],
-      okved_id: okved_cache[item['Вид деятельности']]&.id,
       activity_type: item['Вид деятельности']
     }
   end

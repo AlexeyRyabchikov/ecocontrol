@@ -1,4 +1,6 @@
 class Web::OrdersController < Web::ApplicationController
+  def search_companies; end
+
   def new
     @order = Order.new
     @companies = Company.limit(10).select(:id, "concat_ws(';', name, activity_type, address) as desc")
