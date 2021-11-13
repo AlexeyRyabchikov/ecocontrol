@@ -4,5 +4,6 @@ class Company < ApplicationRecord
 
   validates :name, presence: true
 
-  belongs_to :okved, optional: true
+  has_many :company_okved
+  has_many :okveds, through: :company_okved
 end
