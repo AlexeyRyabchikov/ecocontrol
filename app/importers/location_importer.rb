@@ -3,7 +3,7 @@ class LocationImporter
 
   def initialize()
     @hydra = Typhoeus::Hydra.new(max_concurrency: 10)
-    @compaies = Company.where.not(longitude: :nil).or(Company.where.not(latitude: :nil)).limit(100)
+    @compaies = Company.where('longitude is null or latitude is null').limit(100)
 
     # to env
     @api_key = '9f800cdd-d032-497d-b5cb-2cb9a4348392'
