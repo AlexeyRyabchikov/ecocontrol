@@ -64,7 +64,7 @@ function init() {
          <% end %>
          <% @claims.each do |claim| %>
           .add(new ymaps.Placemark([<%= claim.latitude %>, <%= claim.longitude %>], {
-               balloonContent: '<%= claim.reason%> <%= claim.latitude %>, <%= claim.longitude %>'
+               balloonContent: '<%= claim.reason%>'
            }, {
                preset: 'islands#icon',
                iconColor: 'red'
