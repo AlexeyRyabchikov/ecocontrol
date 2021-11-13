@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_13_120432) do
+ActiveRecord::Schema.define(version: 2021_11_13_165753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 2021_11_13_120432) do
     t.string "symptoms"
     t.string "location"
     t.string "state"
+    t.decimal "longitude", precision: 15, scale: 10
+    t.decimal "latitude", precision: 15, scale: 10
   end
 
   create_table "companies", force: :cascade do |t|
