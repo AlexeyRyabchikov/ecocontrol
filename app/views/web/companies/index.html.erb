@@ -12,12 +12,10 @@
     <tbody>
       <% @companies.each do |company| %>
         <tr>
-          <div class="company">
-              <td><%= company.name %></td>
-              <td><%= company.acivity_type %></td>
-              <td><%= company.description %></td>
-              <td><%= company.phone %></td>
-          </div>
+          <td><%= company.name %></td>
+          <td><%= company.activity_type %></td>
+          <td><%= company.description %></td>
+          <td><%= company.phone %></td>
         </tr>
       <% end %>
     </tbody>
