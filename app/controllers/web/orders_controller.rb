@@ -3,7 +3,8 @@ class Web::OrdersController < Web::ApplicationController
 
   def new
     @order = Order.new
-    @companies = Company.limit(10).select(:id, "concat_ws(';', name, activity_type, address) as desc")
+    @companies = Company.where(nvos_checked: false)
+                        .sample(10)
   end
 
   def create
