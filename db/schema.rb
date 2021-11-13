@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_13_011747) do
+ActiveRecord::Schema.define(version: 2021_11_13_022653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2021_11_13_011747) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "activity_type"
     t.boolean "nvos_checked", default: false
+    t.integer "clame_counter", default: 0
   end
 
   create_table "company_okveds", force: :cascade do |t|
