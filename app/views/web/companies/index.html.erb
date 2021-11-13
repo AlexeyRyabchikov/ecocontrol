@@ -1,19 +1,25 @@
-<% @companies.each_slice(3) do |company_group| %>
-  <div class="container mt-3" style="max-width: 800px">
-    <div class="card-group">
-      <% company_group.each do |company| %>
-        <div class="card">
-          <h5 class="card-header"><%= company.name %></h5>
-          <div class="card-body">
-            <h5 class="card-title"><%= company.activity_type %></h5>
-            <p class="card-text"><%= company.description %></p>
+<div class="container" style="max-width: 800px">
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Навание</th>
+        <th scope="col">Вид едятельности</th>
+        <th scope="col">Адрес</th>
+        <th scope="col">Телефон</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @companies.each do |company| %>
+        <tr>
+          <div class="company">
+              <td><%= company.name %></td>
+              <td><%= company.acivity_type %></td>
+              <td><%= company.description %></td>
+              <td><%= company.phone %></td>
           </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item"><b>Телефон:</b> <%= company.phone %></li>
-            <li class="list-group-item"><b>Адрес</b> <%= company.address %></li>
-          </ul>
-        </div>
+        </tr>
       <% end %>
-    </div>
-  </div>
-<% end %>
+    </tbody>
+  </table>
+</div>
