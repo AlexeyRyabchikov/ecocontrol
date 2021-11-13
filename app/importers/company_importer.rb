@@ -17,8 +17,10 @@ class CompanyImporter
         row = update_keys(row)
         okdev = okved_cache[row['Вид деятельности']]
         company = Company.new(prepare_data(row))
-        company.company_okved.build(okved: okdev) if okdev.present?
-        @compaies << company
+        if white_list?(company)
+          company.company_okved.build(okved: okdev) if okdev.present?
+          @compaies << company
+        end
       end
     end
 
@@ -26,6 +28,20 @@ class CompanyImporter
   end
 
   private
+
+  def white_list?(company)
+    list = [
+      /Кирова, д.130/,
+      /Елькина, д.65/,
+      /Елькина, д.63/,
+      /Елькина, д.67/,
+      /Елькина, д.75/,
+      /Елькина, д.73/,
+      /Елькина, д.77/
+    ]
+
+    list.any? { |x| company[:address].match?(x) }
+  end
 
   def prepare_data(item)
     {
