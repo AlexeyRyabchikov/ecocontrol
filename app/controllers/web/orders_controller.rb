@@ -1,6 +1,7 @@
 class Web::OrdersController < Web::ApplicationController
   def search_companies
     @companies = Company.all
+    @claims = Claim.where.not(longitude: nil, latitude: nil)
   end
 
   def index

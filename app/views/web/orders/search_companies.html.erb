@@ -62,13 +62,14 @@ function init() {
                iconColor: '#0095b6'
            }))
          <% end %>
-          .add(new ymaps.Placemark([55.155703, 61.435555], {
-               balloonContent: 'Жалоба: затрудненное дыхание, помутнение сознания'
+         <% @claims.each do |claim| %>
+          .add(new ymaps.Placemark([<%= claim.latitude %>, <%= claim.longitude %>], {
+               balloonContent: '<%= claim.reason%> <%= claim.latitude %>, <%= claim.longitude %>'
            }, {
                preset: 'islands#icon',
                iconColor: 'red'
-           }));
-
+           }))
+         <% end %>;
     // Включаем редактирование круга.
     myCircle.editor.startEditing();
 }
