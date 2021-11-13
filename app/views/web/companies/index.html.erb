@@ -1,12 +1,12 @@
 <% @companies.each_slice(3) do |company_group| %>
   <div class="container mt-3" style="max-width: 800px">
-    <div class="company-group">
+    <div class="card-group">
       <% company_group.each do |company| %>
-        <div class="company">
-          <h5 class="company-header"><%= company.name %></h5>
-          <div class="company-body">
-            <h5 class="company-title"><%= company.activity_type %></h5>
-            <p class="company-text"><%= company.description %></p>
+        <div class="card">
+          <h5 class="card-header"><%= company.name %></h5>
+          <div class="card-body">
+            <h5 class="card-title"><%= company.activity_type %></h5>
+            <p class="card-text"><%= company.description %></p>
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item"><b>Телефон:</b> <%= company.phone %></li>
