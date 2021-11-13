@@ -1,6 +1,10 @@
 class Web::OrdersController < Web::ApplicationController
   def search_companies; end
 
+  def index
+    @orders = Order.joins(:companies).all.order('date desc').group('orders.id').select('orders.*', 'COUNT(companies.id) as companies_count')
+  end
+
   def new
     @order = Order.new
     @companies = Company.where(nvos_checked: false)
