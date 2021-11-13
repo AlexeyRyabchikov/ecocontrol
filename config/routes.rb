@@ -9,5 +9,7 @@ Rails.application.routes.draw do
     end
     resources :claims
     resources :companies
+
+    resources :forecasts, only: %i[index]
   end
 end
