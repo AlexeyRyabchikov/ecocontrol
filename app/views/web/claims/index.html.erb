@@ -1,25 +1,31 @@
-<div class="container" style="max-width: 1100px">
+<div class="container text-center">
+  <h3>Список обращений граждан </h3>
+</div>
+
+<div class="table mt-4">
   <table class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">Навание</th>
-        <th scope="col">Описание претензии</th>
         <th scope="col">Причина обращения</th>
+        <th scope="col">Описание претензии</th>
         <th scope="col">Примерная дата происшествия</th>
         <th scope="col">Симптомы отравления</th>
+        <th scope="col">Адрес обращения</th>
+        <th scope="col">Дата создания</th>
       </tr>
     </thead>
     <tbody>
       <% @claims.each do |claim| %>
         <tr>
-          <td><%= claim.title %></td>
-          <td><%= claim.description %></td>
           <td><%= claim.reason %></td>
+          <td><%= claim.description %></td>
           <td><%= claim.state %></td>
           <td><%= claim.symptoms %></td>
+          <td><%= claim.location %></td>
+          <td><%= claim.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
-  <a href="/claims/new" class="btn btn-primary">add</a>
+  <a href="/claims/new" class="btn btn-primary">Создать</a>
 </div>
