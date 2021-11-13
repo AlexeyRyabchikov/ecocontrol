@@ -4,7 +4,7 @@
     <label class="mb-2">Организации для обхода</label>
     <% @order.companies.each do |company| %>
       <p>Название: <%= company.name %></p>
-      <p><%= company.activity_type %></p>
+      <p>Тип активности: <%= company.activity_type %></p>
       <p>Описание: <%= company.description %></p>
       <p>Телефон: <%= company.phone %></p>
       <p>Адресс: <%= company.address %></p>
