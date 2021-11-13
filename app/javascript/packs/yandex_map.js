@@ -32,7 +32,44 @@ function init() {
         });
 
     // Добавляем круг на карту.
-    myMap.geoObjects.add(myCircle);
+    myMap.geoObjects
+         .add(myCircle)
+         .add(new ymaps.Placemark([55.164758, 61.438521], {
+              balloonContent: 'ООО "Рога и Копыта'
+          }, {
+              preset: 'islands#icon',
+              iconColor: '#0095b6'
+          }))
+          .add(new ymaps.Placemark([55.134739, 61.415372], {
+               balloonContent: 'ООО "ЧТМЗ"'
+           }, {
+               preset: 'islands#icon',
+               iconColor: '#0095b6'
+           }))
+          .add(new ymaps.Placemark([55.158729, 61.447941], {
+               balloonContent: 'ООО "Правило 34"'
+           }, {
+               preset: 'islands#icon',
+               iconColor: '#0095b6'
+           }))
+          .add(new ymaps.Placemark([55.162322, 61.424820], {
+               balloonContent: 'ООО "Трубопрокатный парень"'
+           }, {
+               preset: 'islands#icon',
+               iconColor: '#0095b6'
+           }))
+          .add(new ymaps.Placemark([55.155703, 61.435555], {
+               balloonContent: 'ОАО "Радий"'
+           }, {
+               preset: 'islands#icon',
+               iconColor: '#0095b6'
+           }))
+          .add(new ymaps.Placemark([55.155703, 61.435555], {
+               balloonContent: 'Жалоба: затрудненное дыхание, помутнение сознания'
+           }, {
+               preset: 'islands#icon',
+               iconColor: 'red'
+           }));
 
     // Включаем редактирование круга.
     myCircle.editor.startEditing();
