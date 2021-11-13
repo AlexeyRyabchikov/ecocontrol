@@ -21,7 +21,6 @@
 </div>
 
 <script>
-ymaps.ready(init);
 
 function init() {
     const map = document.getElementById('map');
@@ -75,4 +74,6 @@ function init() {
     // Включаем редактирование круга.
     myCircle.editor.startEditing();
 }
+
+ymaps.ready(init);
 </script>
