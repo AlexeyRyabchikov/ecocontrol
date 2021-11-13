@@ -1,9 +1,9 @@
 class LocationImporter
   attr_accessor :compaies, :hydra, :api_key
 
-  def initialize(data)
+  def initialize()
     @hydra = Typhoeus::Hydra.new(max_concurrency: 10)
-    @compaies = data || Company.all
+    @compaies = Company.all.limit(100)
 
     # to env
     @api_key = '9f800cdd-d032-497d-b5cb-2cb9a4348392'
