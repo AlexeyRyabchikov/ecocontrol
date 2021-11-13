@@ -21,7 +21,7 @@
   <%= stylesheet_link_tag 'bootstrap-icons' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'theme', 'data-turbolinks-track': 'reload' %>
-
+  <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=9f800cdd-d032-497d-b5cb-2cb9a4348392" type="text/javascript"></script>
 </head>
 
 <body>
@@ -57,6 +57,16 @@
               <li>
                 <%= link_to search_companies_orders_path, class: "nav-link" do %>
                   Поиск плохих организаций
+                <% end %>
+              </li>
+              <li>
+                <%= link_to orders_path, class: "nav-link" do %>
+                  Список заявок
+                <% end %>
+              </li>
+              <li>
+                <%= link_to companies_path, class: "nav-link" do %>
+                  Список организаций
                 <% end %>
               </li>
             </ul>

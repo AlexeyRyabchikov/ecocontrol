@@ -5,7 +5,7 @@ class Web::ClaimsController < Web::ApplicationController
 
   def create
     params = claim_attrs.to_h
-    params['symptoms'] = params['symptoms'].join(',')
+    params['symptoms'] = params['symptoms']&.join(',')
     claim = Claim.new(params)
 
     if claim.save

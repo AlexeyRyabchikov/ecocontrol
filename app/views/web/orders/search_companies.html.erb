@@ -1,6 +1,3 @@
-<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=9f800cdd-d032-497d-b5cb-2cb9a4348392" type="text/javascript"></script>
-<%= javascript_pack_tag 'yandex_map' %>
-
 <div class="container align-middle">
   <h3 class="mb-4" style="text-align: center">Поиск потенциально опасных компаний</h3>
   <p style="text-align: center">Выделите область поиска зеленым кругом для поиска организаций потенциально загрязняющих окружающую среду</p>
@@ -20,3 +17,61 @@
     <button type="button" class="btn btn-success">Начать поиск</button>
   <% end %>
 </div>
+
+<script>
+
+function init() {
+    const map = document.getElementById('map');
+    map.innerHTML = '';
+    // Создаем карту.
+    var myMap = new ymaps.Map("map", {
+            center: [55.154378, 61.401655],
+            zoom: 14,
+            controls: []
+        }, {
+            searchControlProvider: 'yandex#search'
+        });
+
+    // Создаем круг.
+    var myCircle = new ymaps.Circle([
+            // Координаты центра круга.
+            [55.154378, 61.401655],
+            // Радиус круга в метрах.
+            500
+        ], {}, {
+            // Задаем опции круга.
+            // Цвет заливки.
+            fillColor: "#378c49",
+            fillOpacity: 0.2,
+            // Цвет обводки.
+            strokeColor: "#378c49",
+            // Прозрачность обводки.
+            strokeOpacity: 0.8,
+            // Ширина обводки в пикселях.
+            strokeWidth: 3
+        });
+
+    // Добавляем круг на карту.
+    myMap.geoObjects
+         .add(myCircle)
+         <% @companies.each do |company| %>
+          .add(new ymaps.Placemark([<%= company.latitude %>, <%= company.longitude %>], {
+               balloonContent: '<%=company.name %>'
+           }, {
+               preset: 'islands#icon',
+               iconColor: '#0095b6'
+           }))
+         <% end %>
+          .add(new ymaps.Placemark([55.155703, 61.435555], {
+               balloonContent: 'Жалоба: затрудненное дыхание, помутнение сознания'
+           }, {
+               preset: 'islands#icon',
+               iconColor: 'red'
+           }));
+
+    // Включаем редактирование круга.
+    myCircle.editor.startEditing();
+}
+
+ymaps.ready(init);
+</script>
