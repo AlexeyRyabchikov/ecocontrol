@@ -1,21 +1,29 @@
-<div class="container-sm" style="max-width: 700px">
-  <h3 class="mb-3">Заявка для обхода предприятий</h3>
-  <div class="form-group">
-    <label class="mb-2">Организации для обхода</label>
-    <% @order.companies.each do |company| %>
-      <p>Название: <%= company.name %></p>
-      <p>Тип активности: <%= company.activity_type %></p>
-      <p>Описание: <%= company.description %></p>
-      <p>Телефон: <%= company.phone %></p>
-      <p>Адресс: <%= company.address %></p>
-    <% end %>
-  </div>
-  <div class="form-group mt-3">
-    <label for="dateInput1">Дата выезда</label>
-    <p><%= @order.date %></p>
-  </div>
-  <div class="form-group mt-3">
-    <label for="commentInput1">Комментарий</label>
+<div class="container">
+  <div class="jumbotron" style="max-width: 800px; margin: auto">
+    <h1 class="display-4">Заявка для обхода предприятий</h1>
+    <p class="lead"><%= @order.date %></p>
+    <hr class="my-4">
     <p><%= @order.comment %></p>
   </div>
 </div>
+
+
+<% @order.companies.each_slice(2) do |company_group| %>
+  <div class="container mt-3" style="max-width: 800px">
+    <div class="card-group">
+      <% company_group.each do |company| %>
+        <div class="card">
+          <h5 class="card-header"><%= company.name %></h5>
+          <div class="card-body">
+            <h5 class="card-title"><%= company.activity_type %></h5>
+            <p class="card-text"><%= company.description %></p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><b>Телефон:</b> <%= company.phone %></li>
+            <li class="list-group-item"><b>Адрес</b> <%= company.address %></li>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
